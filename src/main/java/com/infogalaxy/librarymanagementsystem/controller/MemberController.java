@@ -1,12 +1,16 @@
 package com.infogalaxy.librarymanagementsystem.controller;
 
 import com.infogalaxy.librarymanagementsystem.entity.MemberEntity;
-import com.infogalaxy.librarymanagementsystem.service.MemberService;
+import com.infogalaxy.librarymanagementsystem.service.IMemberService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/member/api")
 public class MemberController {
+
+    @Autowired
+    IMemberService iMemberService;
 
     @GetMapping("/home")
     public String home() {
@@ -20,7 +24,6 @@ public class MemberController {
      */
     @PostMapping("/createmember")
     public MemberEntity createMember(@RequestBody MemberEntity memberEntity) {
-        MemberService memberService = new MemberService();
-        return memberService.createMember(memberEntity);
+        return iMemberService.createMember(memberEntity);
     }
 }

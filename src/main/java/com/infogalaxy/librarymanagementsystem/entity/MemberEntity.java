@@ -14,7 +14,7 @@ public class MemberEntity {
 
     private String membername;
 
-    private int membermbno;
+    private double membermbno;
 
     private String memberemail;
 
