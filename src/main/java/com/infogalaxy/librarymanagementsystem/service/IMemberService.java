@@ -11,4 +11,8 @@ public interface IMemberService {
 
     public List<MemberEntity> retrieveMember();
 
+    public MemberEntity retrieveMemberById(int id);
+
+    public MemberEntity updateMemberById(int id, MemberModel memberModel);
+
 }

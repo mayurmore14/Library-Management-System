@@ -29,9 +29,30 @@ public class MemberService implements IMemberService{
 
     /***
      * Method to Get All Members data
-     * @return List of MemberEntity objects
+     * @return List of all MemberEntity objects
      */
     public List<MemberEntity> retrieveMember() {
         return iMemberRepo.findAll();
+    }
+
+    /***
+     * method to Retrieve particular member data by their ID
+     * @param id - used id for search data of member
+     * @return - object of member found by ID
+     */
+    public MemberEntity retrieveMemberById(int id) {
+        return iMemberRepo.findById(id).get();
+    }
+
+    /***
+     * mwthod to Update member's data by their ID
+     * @param id
+     * @param memberModel - object of model class containing new data for update
+     * @return - updated data of member
+     */
+    public MemberEntity updateMemberById(int id, MemberModel memberModel) {
+        MemberEntity memberEntity = new MemberEntity();
+        BeanUtils.copyProperties(memberModel,memberEntity);
+        return iMemberRepo.save(memberEntity);
     }
 }

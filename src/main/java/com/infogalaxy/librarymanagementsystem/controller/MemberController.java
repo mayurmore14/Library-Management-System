@@ -38,4 +38,25 @@ public class MemberController {
     public List<MemberEntity> retrieveMember() {
         return iMemberService.retrieveMember();
     }
+
+    /***
+     * API to get member's information by their ID
+     * @param id
+     * @return object of entity
+     */
+    @GetMapping("/retrievememberbyid/{id}")
+    public MemberEntity retrieveMemberById(@PathVariable ("id") int id) {
+        return iMemberService.retrieveMemberById(id);
+    }
+
+    /***
+     * API to Update existing data by using their ID
+     * @param id -
+     * @param memberModel - object of model class containing new data for update
+     * @return - updated data of member
+     */
+    @PutMapping("/updatememberbyid/{id}")
+    public MemberEntity updateMemberById(@PathVariable ("id") int id , @RequestBody MemberModel memberModel) {
+        return iMemberService.updateMemberById(id,memberModel);
+    }
 }

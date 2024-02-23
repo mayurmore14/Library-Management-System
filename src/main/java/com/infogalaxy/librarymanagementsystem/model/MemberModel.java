@@ -2,6 +2,9 @@ package com.infogalaxy.librarymanagementsystem.model;
 
 import lombok.Data;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 @Data
 public class MemberModel {
 
@@ -9,7 +12,7 @@ public class MemberModel {
 
     private String membername;
 
-    private double membermbno;
+    private long membermbno;
 
     private String memberemail;
 
