@@ -15,4 +15,6 @@ public interface IMemberService {
 
     public MemberEntity updateMemberById(int id, MemberModel memberModel);
 
+    public String deleteMemberById(int id);
+
 }

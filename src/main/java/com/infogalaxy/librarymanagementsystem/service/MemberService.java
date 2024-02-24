@@ -18,8 +18,8 @@ public class MemberService implements IMemberService{
 
     /***
      * creating an method use to add new member
-     * @param memberModel
-     * @return ruturning object of entity class which is containing data of member
+     * @param memberModel - object of library member
+     * @return - object of entity class which is containing data of member
      */
     public MemberEntity createMember(MemberModel memberModel) {
         MemberEntity memberEntity = new MemberEntity();
@@ -45,8 +45,8 @@ public class MemberService implements IMemberService{
     }
 
     /***
-     * mwthod to Update member's data by their ID
-     * @param id
+     * method to Update member's data by their ID
+     * @param id - Access member data by given Id from database
      * @param memberModel - object of model class containing new data for update
      * @return - updated data of member
      */
@@ -54,5 +54,16 @@ public class MemberService implements IMemberService{
         MemberEntity memberEntity = new MemberEntity();
         BeanUtils.copyProperties(memberModel,memberEntity);
         return iMemberRepo.save(memberEntity);
+    }
+
+    /***
+     * method to Delete Member's Data form database by their ID
+     * @param id Access member data by given Id from database
+     * @return - Message of Deletion
+     */
+    public String deleteMemberById(int id) {
+        MemberEntity memberEntity = retrieveMemberById(id);
+        iMemberRepo.delete(memberEntity);
+        return "Library Member's Data Deleted Successfully...";
     }
 }

@@ -23,7 +23,7 @@ public class MemberController {
     /***
      * creating an API for Adding New Member
      * @param memberModel
-     * @return object of entity class
+     * @return - object of entity class
      */
     @PostMapping("/createmember")
     public MemberEntity createMember(@RequestBody MemberModel memberModel) {
@@ -41,7 +41,7 @@ public class MemberController {
 
     /***
      * API to get member's information by their ID
-     * @param id
+     * @param id - find member data by given ID
      * @return object of entity
      */
     @GetMapping("/retrievememberbyid/{id}")
@@ -51,12 +51,22 @@ public class MemberController {
 
     /***
      * API to Update existing data by using their ID
-     * @param id -
+     * @param id - find member data by given ID
      * @param memberModel - object of model class containing new data for update
      * @return - updated data of member
      */
     @PutMapping("/updatememberbyid/{id}")
     public MemberEntity updateMemberById(@PathVariable ("id") int id , @RequestBody MemberModel memberModel) {
         return iMemberService.updateMemberById(id,memberModel);
+    }
+
+    /***
+     * API to Delete Member Data from Database by Using their ID
+     * @param id - Find member Data by given ID
+     * @return - message of Deletion
+     */
+    @DeleteMapping("deletememberbyid/{id}")
+    public String deleteMemberById(@PathVariable ("id") int id) {
+        return iMemberService.deleteMemberById(id);
     }
 }
