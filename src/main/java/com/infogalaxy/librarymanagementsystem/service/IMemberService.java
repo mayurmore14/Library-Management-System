@@ -4,6 +4,7 @@ import com.infogalaxy.librarymanagementsystem.entity.MemberEntity;
 import com.infogalaxy.librarymanagementsystem.model.MemberModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IMemberService {
 
@@ -11,7 +12,7 @@ public interface IMemberService {
 
     public List<MemberEntity> retrieveMember();
 
-    public MemberEntity retrieveMemberById(int id);
+    public Optional<MemberEntity> retrieveMemberById(int id);
 
     public MemberEntity updateMemberById(int id, MemberModel memberModel);
 

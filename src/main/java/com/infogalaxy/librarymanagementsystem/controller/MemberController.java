@@ -39,7 +39,7 @@ public class MemberController {
      */
     @GetMapping("/retrieveallmembers")
     public ResponseEntity<?> retrieveMember() {
-        return new ResponseEntity<>(new Responses ("Member Retrieved Successfully...",HttpStatus.FOUND, iMemberService.retrieveMember()),HttpStatus.FOUND);
+        return new ResponseEntity<>(new Responses (" All Member's Retrieved Successfully...",HttpStatus.FOUND, iMemberService.retrieveMember()),HttpStatus.FOUND);
     }
 
     /***
@@ -49,7 +49,7 @@ public class MemberController {
      */
     @GetMapping("/retrievememberbyid/{id}")
     public ResponseEntity<?> retrieveMemberById(@PathVariable ("id") int id) {
-        return new ResponseEntity<>(new Responses("Retrieved All Members Successfully", HttpStatus.FOUND, iMemberService.retrieveMemberById(id)),HttpStatus.FOUND);
+        return new ResponseEntity<>(new Responses("Retrieved Member Successfully", HttpStatus.FOUND, iMemberService.retrieveMemberById(id)),HttpStatus.FOUND);
     }
 
     /***

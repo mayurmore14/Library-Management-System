@@ -1,6 +1,7 @@
 package com.infogalaxy.librarymanagementsystem.service;
 
 import com.infogalaxy.librarymanagementsystem.entity.MemberEntity;
+import com.infogalaxy.librarymanagementsystem.exceptions.MemberNotFoundException;
 import com.infogalaxy.librarymanagementsystem.model.MemberModel;
 import com.infogalaxy.librarymanagementsystem.repo.IMemberRepo;
 import org.springframework.beans.BeanUtils;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -40,8 +42,14 @@ public class MemberService implements IMemberService{
      * @param id - used id for search data of member
      * @return - object of member found by ID
      */
-    public MemberEntity retrieveMemberById(int id) {
-        return iMemberRepo.findById(id).get();
+    public Optional<MemberEntity> retrieveMemberById(int id) {
+        Optional<MemberEntity> memberEntity = iMemberRepo.findById(id);
+        if (memberEntity.isPresent()) {
+            return memberEntity;
+        } else {
+            throw new MemberNotFoundException("Member with Given ID is not Found in Database");
+        }
+
     }
 
     /***
@@ -62,7 +70,7 @@ public class MemberService implements IMemberService{
      * @return - Message of Deletion
      */
     public String deleteMemberById(int id) {
-        MemberEntity memberEntity = retrieveMemberById(id);
+        MemberEntity memberEntity = retrieveMemberById(id).get();
         iMemberRepo.delete(memberEntity);
         return "Library Member's Data Deleted Successfully...";
     }
