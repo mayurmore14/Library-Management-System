@@ -14,9 +14,9 @@ public class Responses {
 
 
 
-    public Responses(HttpStatus code, Object object) {
+    public Responses(HttpStatus code, String message) {
         this.code = code;
-        this.object = object;
+        this.message = message;
     }
 
     public Responses(String message, HttpStatus code, Object object) {

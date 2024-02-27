@@ -59,7 +59,7 @@ public class MemberService implements IMemberService{
      * @return - updated data of member
      */
     public MemberEntity updateMemberById(int id, MemberModel memberModel) {
-        MemberEntity memberEntity = new MemberEntity();
+        MemberEntity memberEntity = retrieveMemberById(id).get();
         BeanUtils.copyProperties(memberModel,memberEntity);
         return iMemberRepo.save(memberEntity);
     }

@@ -70,6 +70,6 @@ public class MemberController {
      */
     @DeleteMapping("deletememberbyid/{id}")
     public ResponseEntity<?> deleteMemberById(@PathVariable ("id") int id) {
-        return new ResponseEntity<>(new Responses(HttpStatus.ACCEPTED, iMemberService.deleteMemberById(id)),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(new Responses("Member Deleted...",HttpStatus.ACCEPTED,iMemberService.deleteMemberById(id)),HttpStatus.ACCEPTED);
     }
 }
