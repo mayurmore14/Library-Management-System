@@ -20,7 +20,7 @@ public class MemberController {
 
     @GetMapping("/home")
     public String home() {
-        return "Welcome to Library Management System";
+        return "Welcome to Library Member API";
     }
 
     /***
