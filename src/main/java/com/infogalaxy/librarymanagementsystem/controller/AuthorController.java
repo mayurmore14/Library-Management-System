@@ -42,4 +42,14 @@ public class AuthorController {
         return new ResponseEntity<>(new Responses("All Authors Information Retrieved successfully...", HttpStatus.FOUND, iAuthorService.retrieveAllAuthors()),HttpStatus.FOUND);
     }
 
+    /***
+     * API to Retrieve Author by ID
+     * @param id - Find Author Data by their ID
+     * @return - Custom Response object with response data
+     */
+    @GetMapping("/retrieveauthorbyid/{id}")
+    public ResponseEntity<?> retrieveAuthorById(@PathVariable ("id") int id) {
+        return new ResponseEntity<>(new Responses( "Author Data Retrieved Successfully...",HttpStatus.FOUND,iAuthorService.retrieveAuthorById(id)),HttpStatus.FOUND);
+    }
+
 }

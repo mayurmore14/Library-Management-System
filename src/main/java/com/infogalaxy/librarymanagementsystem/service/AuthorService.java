@@ -30,12 +30,23 @@ public class AuthorService implements IAuthorService{
     }
 
     /***
-     * method to retrieve all members data
+     * method to retrieve all Authors data
      * @return - List of All Authors
      */
     @Override
     public List<AuthorEntity> retrieveAllAuthors() {
         return iAuthorRepo.findAll();
     }
-    
+
+    /***
+     * Method to Retrieve Author data by their ID
+     * @param id - Used to find Author data by their ID
+     * @return - Data of Author as a Object
+     */
+    @Override
+    public AuthorEntity retrieveAuthorById(int id) {
+        AuthorEntity authorEntity = iAuthorRepo.findById(id).get();
+        return authorEntity;
+    }
+
 }
