@@ -52,4 +52,15 @@ public class AuthorController {
         return new ResponseEntity<>(new Responses( "Author Data Retrieved Successfully...",HttpStatus.FOUND,iAuthorService.retrieveAuthorById(id)),HttpStatus.FOUND);
     }
 
+    /***
+     * API to Update Details of Author
+     * @param id - used to find authors data
+     * @param authorModel - new data of author
+     * @return - Custom response Updated object with response data
+     */
+    @GetMapping("/updateauthorbyid/{id}")
+    public ResponseEntity<?> updateAuthorById(@PathVariable ("id") int id, @RequestBody AuthorModel authorModel) {
+        return new ResponseEntity<>(new Responses("Author's Data Updated Successfully...", HttpStatus.ACCEPTED, iAuthorService.updateAuthorById(id, authorModel)),HttpStatus.ACCEPTED);
+    }
+
 }

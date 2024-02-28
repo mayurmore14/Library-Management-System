@@ -49,4 +49,20 @@ public class AuthorService implements IAuthorService{
         return authorEntity;
     }
 
+    /***
+     * method to update existing author data
+     * @param id - Access member data by given Id from database
+     * @param authorModel - object of model class containing new data for update
+     * @return - updated data of author
+     */
+    @Override
+    public AuthorEntity updateAuthorById(int id, AuthorModel authorModel) {
+
+     AuthorEntity authorEntity = retrieveAuthorById(id);
+     BeanUtils.copyProperties(authorModel,authorEntity);
+     return iAuthorRepo.save(authorEntity);
+
+    }
+
+
 }
