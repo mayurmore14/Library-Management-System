@@ -51,7 +51,7 @@ public class AuthorService implements IAuthorService{
 
     /***
      * method to update existing author data
-     * @param id - Access member data by given Id from database
+     * @param id - Access author data by given Id from database
      * @param authorModel - object of model class containing new data for update
      * @return - updated data of author
      */
@@ -62,6 +62,19 @@ public class AuthorService implements IAuthorService{
      BeanUtils.copyProperties(authorModel,authorEntity);
      return iAuthorRepo.save(authorEntity);
 
+    }
+
+    /***
+     * method to delete author's data
+     * @param id - access author data by given id from database
+     * @return - deletion message as string
+     */
+    @Override
+    public String deleteAuthorById(int id) {
+
+        AuthorEntity authorEntity = retrieveAuthorById(id);
+        iAuthorRepo.delete(authorEntity);
+        return "Author Data Deleted...";
     }
 
 

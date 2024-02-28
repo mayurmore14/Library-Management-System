@@ -1,6 +1,6 @@
 package com.infogalaxy.librarymanagementsystem.controller;
 
-import com.infogalaxy.librarymanagementsystem.entity.AuthorEntity;
+
 import com.infogalaxy.librarymanagementsystem.model.AuthorModel;
 import com.infogalaxy.librarymanagementsystem.responses.Responses;
 import com.infogalaxy.librarymanagementsystem.service.IAuthorService;
@@ -9,7 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+
 
 @RestController
 @RequestMapping("author/api")
@@ -58,9 +58,19 @@ public class AuthorController {
      * @param authorModel - new data of author
      * @return - Custom response Updated object with response data
      */
-    @GetMapping("/updateauthorbyid/{id}")
+    @PutMapping("/updateauthorbyid/{id}")
     public ResponseEntity<?> updateAuthorById(@PathVariable ("id") int id, @RequestBody AuthorModel authorModel) {
         return new ResponseEntity<>(new Responses("Author's Data Updated Successfully...", HttpStatus.ACCEPTED, iAuthorService.updateAuthorById(id, authorModel)),HttpStatus.ACCEPTED);
+    }
+
+    /***
+     * API to Delete Author Data
+     * @param id - access author by given id from database
+     * @return - custom response with string
+     */
+    @DeleteMapping("/deleteauthorbyid/{id}")
+    public ResponseEntity<?> deleteAuthorById(@PathVariable ("id") int id) {
+        return new ResponseEntity<>(new Responses(HttpStatus.ACCEPTED, "Author's Data Deleted Successfully..."),HttpStatus.ACCEPTED);
     }
 
 }
