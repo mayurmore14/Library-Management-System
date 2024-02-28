@@ -16,4 +16,5 @@ public class AuthorEntity {
     private String authorname;
 
     private String authorcity;
+
 }
