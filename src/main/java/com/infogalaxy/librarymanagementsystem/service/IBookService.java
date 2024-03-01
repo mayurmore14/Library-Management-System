@@ -10,4 +10,6 @@ public interface IBookService {
     public BookEntity addBook(BookModel bookModel);
 
     public List<BookEntity> retrieveAllBooks();
+
+    public BookEntity retrieveBookByName(String name);
 }

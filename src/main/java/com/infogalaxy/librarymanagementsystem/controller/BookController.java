@@ -29,4 +29,9 @@ public class BookController {
     public ResponseEntity<?> retrieveAllBooks() {
         return new ResponseEntity<>(new Responses("All Books Information Retrieved Successfully",HttpStatus.FOUND,iBookService.retrieveAllBooks()), HttpStatus.FOUND);
     }
+
+    @GetMapping("/retrievebookbyname/{name}")
+    public ResponseEntity<?> retrieveBookByName(@PathVariable ("name") String name) {
+        return new ResponseEntity<>(new Responses( "Book's Data Retrieved Successfully", HttpStatus.ACCEPTED, iBookService.retrieveBookByName(name)),HttpStatus.ACCEPTED);
+    }
 }

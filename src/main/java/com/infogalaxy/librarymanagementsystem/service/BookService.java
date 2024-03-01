@@ -30,5 +30,24 @@ public class BookService implements IBookService{
 
     }
 
+    @Override
+    public BookEntity retrieveBookByName(String name) {
+
+        List<BookEntity> bookEntityList = retrieveAllBooks();
+
+        for (int i=0; i< retrieveAllBooks().size(); i++) {
+
+            if (name.equalsIgnoreCase(bookEntityList.get(i).getBooktitle())) {
+
+                BookEntity bookEntity = bookEntityList.get(i);
+                return bookEntity;
+            } else {
+                return null;
+            }
+        }
+
+        return null;
+    }
+
 
 }
