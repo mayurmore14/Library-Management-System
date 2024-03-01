@@ -7,6 +7,8 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 
 @Service
 public class BookService implements IBookService{
@@ -20,6 +22,12 @@ public class BookService implements IBookService{
         BookEntity bookEntity = new BookEntity();
         BeanUtils.copyProperties(bookModel,bookEntity);
         return iBookRepo.save(bookEntity);
+    }
+
+    @Override
+    public List<BookEntity> retrieveAllBooks() {
+        return iBookRepo.findAll();
+
     }
 
 
