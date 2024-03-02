@@ -4,6 +4,7 @@ import com.infogalaxy.librarymanagementsystem.entity.BookEntity;
 import com.infogalaxy.librarymanagementsystem.model.BookModel;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IBookService {
 
@@ -14,4 +15,7 @@ public interface IBookService {
     public BookEntity retrieveBookByName(String name);
 
     public BookEntity updateBookById(int id, BookModel bookModel);
+
+    public Optional<BookEntity> retrieveBookById(int id);
+
 }

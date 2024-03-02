@@ -11,6 +11,6 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(MemberNotFoundException.class)
     public ResponseEntity<?> memberNotFoundEx( MemberNotFoundException ex) {
-return new ResponseEntity<>("Member Not found With Given ID , Please Enter Valid Member ID", HttpStatus.NOT_FOUND);
+return new ResponseEntity<>("Data Not found With Given ID , Please Enter Valid Input Data", HttpStatus.NOT_FOUND);
     }
 }

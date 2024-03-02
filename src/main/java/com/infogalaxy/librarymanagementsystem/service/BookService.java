@@ -1,6 +1,7 @@
 package com.infogalaxy.librarymanagementsystem.service;
 
 import com.infogalaxy.librarymanagementsystem.entity.BookEntity;
+import com.infogalaxy.librarymanagementsystem.exceptions.MemberNotFoundException;
 import com.infogalaxy.librarymanagementsystem.model.BookModel;
 import com.infogalaxy.librarymanagementsystem.repo.IBookRepo;
 import org.springframework.beans.BeanUtils;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
@@ -52,9 +54,21 @@ public class BookService implements IBookService{
     public BookEntity updateBookById(int id, BookModel bookModel) {
 
         BookEntity bookEntity = iBookRepo.findById(id).get();
+
         BeanUtils.copyProperties(bookModel,bookEntity);
         return iBookRepo.save(bookEntity);
 
+    }
+
+    @Override
+    public  Optional<BookEntity> retrieveBookById(int id) {
+
+        Optional<BookEntity> bookEntity = iBookRepo.findById(id);
+        if (bookEntity.isPresent()) {
+            return bookEntity;
+        } else {
+            throw new MemberNotFoundException("Data not Found With Given ID");
+        }
     }
 
 
