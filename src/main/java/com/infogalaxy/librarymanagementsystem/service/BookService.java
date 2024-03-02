@@ -71,5 +71,14 @@ public class BookService implements IBookService{
         }
     }
 
+    @Override
+    public String deleteBookById(int id) {
+        BookEntity bookEntity = retrieveBookById(id).get();
+        iBookRepo.delete(bookEntity);
+        return "Book Deleted";
+
+
+    }
+
 
 }
