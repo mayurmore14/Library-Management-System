@@ -34,4 +34,9 @@ public class BookController {
     public ResponseEntity<?> retrieveBookByName(@PathVariable ("name") String name) {
         return new ResponseEntity<>(new Responses( "Book's Data Retrieved Successfully", HttpStatus.ACCEPTED, iBookService.retrieveBookByName(name)),HttpStatus.ACCEPTED);
     }
+
+    @PutMapping("/updatebookbyid/{id}")
+    public ResponseEntity<?> updateBookById(@PathVariable ("id") int id,@RequestBody BookModel bookModel) {
+        return new ResponseEntity<>(new Responses("Book's Data Updated Successfully",HttpStatus.ACCEPTED,iBookService.updateBookById(id,bookModel)),HttpStatus.ACCEPTED);
+    }
 }

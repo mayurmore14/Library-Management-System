@@ -45,8 +45,16 @@ public class BookService implements IBookService{
                 return null;
             }
         }
-
         return null;
+    }
+
+    @Override
+    public BookEntity updateBookById(int id, BookModel bookModel) {
+
+        BookEntity bookEntity = iBookRepo.findById(id).get();
+        BeanUtils.copyProperties(bookModel,bookEntity);
+        return iBookRepo.save(bookEntity);
+
     }
 
 
