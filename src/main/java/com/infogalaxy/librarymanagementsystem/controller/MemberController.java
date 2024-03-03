@@ -4,6 +4,7 @@ import com.infogalaxy.librarymanagementsystem.entity.MemberEntity;
 import com.infogalaxy.librarymanagementsystem.model.MemberModel;
 import com.infogalaxy.librarymanagementsystem.responses.Responses;
 import com.infogalaxy.librarymanagementsystem.service.IMemberService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -29,7 +30,7 @@ public class MemberController {
      * @return - Custom response object with response data
      */
     @PostMapping("/createmember")
-    public ResponseEntity<?> createMember(@RequestBody MemberModel memberModel) {
+    public ResponseEntity<?> createMember(@RequestBody @Valid MemberModel memberModel) {
         return new ResponseEntity<>(new Responses("New Member Added Successfully...", HttpStatus.CREATED, iMemberService.createMember(memberModel)),HttpStatus.CREATED);
     }
 

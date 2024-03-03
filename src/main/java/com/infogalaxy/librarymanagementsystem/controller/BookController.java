@@ -6,6 +6,7 @@ import com.infogalaxy.librarymanagementsystem.entity.BookEntity;
 import com.infogalaxy.librarymanagementsystem.model.BookModel;
 import com.infogalaxy.librarymanagementsystem.responses.Responses;
 import com.infogalaxy.librarymanagementsystem.service.IBookService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,7 +22,7 @@ public class BookController {
     IBookService iBookService;
 
     @PostMapping("/addbook")
-    public ResponseEntity<?> addBook(@RequestBody BookModel bookModel) {
+    public ResponseEntity<?> addBook(@RequestBody @Valid BookModel bookModel) {
         return new ResponseEntity<>(new Responses("Books Data Created Successfully",HttpStatus.CREATED, iBookService.addBook(bookModel)),HttpStatus.CREATED);
     }
 

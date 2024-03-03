@@ -53,7 +53,7 @@ public class BookService implements IBookService{
     @Override
     public BookEntity updateBookById(int id, BookModel bookModel) {
 
-        BookEntity bookEntity = iBookRepo.findById(id).get();
+        BookEntity bookEntity = retrieveBookById(id).get();
 
         BeanUtils.copyProperties(bookModel,bookEntity);
         return iBookRepo.save(bookEntity);
