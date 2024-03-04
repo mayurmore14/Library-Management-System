@@ -3,6 +3,10 @@ package com.infogalaxy.librarymanagementsystem.responses;
 import lombok.Data;
 import org.springframework.http.HttpStatus;
 
+
+/***
+ * Responses class is responsible to custom response object with response data
+ */
 @Data
 public class Responses {
 

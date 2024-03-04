@@ -16,9 +16,16 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("author/api")
 public class AuthorController {
 
+    /***
+     * to create object of author service interface
+     */
     @Autowired
     IAuthorService iAuthorService;
 
+    /***
+     * API to print welcome message
+     * @return - string
+     */
     @GetMapping("/home")
     public String home() {
         return "Welcome to Author API";
@@ -26,8 +33,8 @@ public class AuthorController {
 
     /***
      * API to create new Author
-     * @param authorModel
-     * @return Custom Response object with response data
+     * @param authorModel - object of model class which is passing input data
+     * @return - Custom Response object with response data
      */
     @PostMapping("/createauthor")
     public ResponseEntity<?> createAuthor(@RequestBody @Valid AuthorModel authorModel) {
@@ -71,7 +78,7 @@ public class AuthorController {
      */
     @DeleteMapping("/deleteauthorbyid/{id}")
     public ResponseEntity<?> deleteAuthorById(@PathVariable ("id") int id) {
-        return new ResponseEntity<>(new Responses(HttpStatus.ACCEPTED, "Author's Data Deleted Successfully..."),HttpStatus.ACCEPTED);
+        return new ResponseEntity<>(new Responses("Author's Data Deleted Successfully...",HttpStatus.ACCEPTED,iAuthorService.deleteAuthorById(id)),HttpStatus.ACCEPTED);
     }
 
 }

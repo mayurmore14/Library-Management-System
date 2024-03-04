@@ -1,6 +1,7 @@
 package com.infogalaxy.librarymanagementsystem.service;
 
 import com.infogalaxy.librarymanagementsystem.entity.AuthorEntity;
+import com.infogalaxy.librarymanagementsystem.exceptions.MemberNotFoundException;
 import com.infogalaxy.librarymanagementsystem.model.AuthorModel;
 import com.infogalaxy.librarymanagementsystem.repo.IAuthorRepo;
 import org.springframework.beans.BeanUtils;
@@ -8,11 +9,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @Service
 public class AuthorService implements IAuthorService{
 
+    /***
+     * to create object of author repo interface
+     */
     @Autowired
     IAuthorRepo iAuthorRepo;
 
@@ -44,9 +49,14 @@ public class AuthorService implements IAuthorService{
      * @return - Data of Author as a Object
      */
     @Override
-    public AuthorEntity retrieveAuthorById(int id) {
-        AuthorEntity authorEntity = iAuthorRepo.findById(id).get();
-        return authorEntity;
+    public Optional<AuthorEntity> retrieveAuthorById(int id) {
+        Optional<AuthorEntity> authorEntity = iAuthorRepo.findById(id);
+        if (authorEntity.isPresent()) {
+            return authorEntity;
+        } else {
+            throw new MemberNotFoundException("Book with Given ID is not Found in Database");
+        }
+
     }
 
     /***
@@ -58,7 +68,7 @@ public class AuthorService implements IAuthorService{
     @Override
     public AuthorEntity updateAuthorById(int id, AuthorModel authorModel) {
 
-     AuthorEntity authorEntity = retrieveAuthorById(id);
+     AuthorEntity authorEntity = retrieveAuthorById(id).get();
      BeanUtils.copyProperties(authorModel,authorEntity);
      return iAuthorRepo.save(authorEntity);
 
@@ -72,7 +82,7 @@ public class AuthorService implements IAuthorService{
     @Override
     public String deleteAuthorById(int id) {
 
-        AuthorEntity authorEntity = retrieveAuthorById(id);
+        AuthorEntity authorEntity = retrieveAuthorById(id).get();
         iAuthorRepo.delete(authorEntity);
         return "Author Data Deleted...";
     }

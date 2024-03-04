@@ -7,6 +7,10 @@ import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 
+/***
+ * Interacting book Entity Class to the Database with book entity Table
+ */
+
 @Data
 @Entity
 @Table(name = "bookinfo")

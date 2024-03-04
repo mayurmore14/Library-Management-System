@@ -15,6 +15,9 @@ import java.util.Optional;
 @Service
 public class MemberService implements IMemberService{
 
+    /***
+     * to create object of member repo interface
+     */
     @Autowired
     IMemberRepo iMemberRepo;
 

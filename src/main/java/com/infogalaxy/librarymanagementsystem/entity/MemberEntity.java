@@ -5,6 +5,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+
+/***
+ * Interacting Member Entity Class to the Database with member entity Table
+ */
+
 @Data
 @Entity
 @Table(name = "memberinfo")

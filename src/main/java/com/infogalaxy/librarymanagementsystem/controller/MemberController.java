@@ -16,6 +16,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/member/api")
 public class MemberController {
 
+    /***
+     * to create object of member service interface
+     */
     @Autowired
     IMemberService iMemberService;
 
@@ -26,7 +29,7 @@ public class MemberController {
 
     /***
      * creating an API for Adding New Member
-     * @param memberModel
+     * @param memberModel - object of model class which is passing input data
      * @return - Custom response object with response data
      */
     @PostMapping("/createmember")

@@ -15,9 +15,18 @@ import java.util.Optional;
 @Service
 public class BookService implements IBookService{
 
+    /***
+     * to create object of book repo interface
+     */
     @Autowired
     IBookRepo iBookRepo;
 
+
+    /***
+     * method to add new book
+     * @param bookModel - object of model class which is passing input data
+     * @return - object of book entity(Book)
+     */
     @Override
     public BookEntity addBook(BookModel bookModel) {
 
@@ -26,12 +35,21 @@ public class BookService implements IBookService{
         return iBookRepo.save(bookEntity);
     }
 
+    /***
+     * method to retrieve all book from database
+     * @return - list of all objects (Books)
+     */
     @Override
     public List<BookEntity> retrieveAllBooks() {
         return iBookRepo.findAll();
 
     }
 
+    /***
+     * method to retrieve book by book name
+      * @param name - to find related book by given title name
+     * @return - object of founded Book
+     */
     @Override
     public BookEntity retrieveBookByName(String name) {
 
@@ -50,6 +68,12 @@ public class BookService implements IBookService{
         return null;
     }
 
+    /***
+     * method to update book by book ID
+     * @param id - to find related book by book ID
+     * @param bookModel - object of model class containing new data for update
+     * @return - updated data of book
+     */
     @Override
     public BookEntity updateBookById(int id, BookModel bookModel) {
 
@@ -60,6 +84,11 @@ public class BookService implements IBookService{
 
     }
 
+    /***
+     *  method to retrieve book by book ID
+     * @param id - to find related book by book ID
+     * @return - object of entity class
+     */
     @Override
     public  Optional<BookEntity> retrieveBookById(int id) {
 
@@ -71,14 +100,16 @@ public class BookService implements IBookService{
         }
     }
 
+    /***
+     * method to delete book by Given ID
+     * @param id - to find related book by book ID
+     * @return - deletion message as a string
+     */
     @Override
     public String deleteBookById(int id) {
         BookEntity bookEntity = retrieveBookById(id).get();
         iBookRepo.delete(bookEntity);
         return "Book Deleted";
-
-
     }
-
 
 }

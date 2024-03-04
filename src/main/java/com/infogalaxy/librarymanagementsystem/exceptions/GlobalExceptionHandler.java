@@ -15,6 +15,10 @@ import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExcep
 import java.util.HashMap;
 import java.util.Map;
 
+
+/***
+ * used to handle MemberNotFoundException and handleMethodArgumentNotValid exception as well as all types of ecxeptions
+ */
 @RestControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 

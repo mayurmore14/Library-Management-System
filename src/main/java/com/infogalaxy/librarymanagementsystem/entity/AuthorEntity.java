@@ -5,6 +5,11 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.Data;
 
+
+/***
+ * Interacting Author Entity Class to the Database with author entity Table
+ */
+
 @Data
 @Entity
 @Table(name = "authorinfo")
